@@ -39,6 +39,7 @@
 
         devShell = pkgs.mkShell {
           packages = with pkgs; [
+            bashInteractive
             go
             gopls
           ];
