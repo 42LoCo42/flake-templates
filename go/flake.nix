@@ -36,5 +36,12 @@
         apps = mkApps [
           "example-binary-name"
         ];
+
+        devShell = pkgs.mkShell {
+          packages = with pkgs; [
+            go
+            gopls
+          ];
+        };
       });
 }
