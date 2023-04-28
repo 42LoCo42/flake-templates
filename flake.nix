@@ -2,6 +2,10 @@
   description = "My collection of flake templates";
 
   outputs = { self }: {
+    defaultTemplate = {
+      description = "A tiny flake template";
+      path = ./. + "/tiny";
+    };
     templates =
       let
         mkTemplates = names: builtins.listToAttrs (map
