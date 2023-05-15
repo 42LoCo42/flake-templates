@@ -21,6 +21,7 @@
       mkTemplates [
         "go"
         "haskell"
+        "python"
       ];
   };
 }
