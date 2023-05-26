@@ -27,6 +27,7 @@ executable example
     build-depends:
       base,
       relude,
+      flow,
 
     mixins:
       base hiding (Prelude),
