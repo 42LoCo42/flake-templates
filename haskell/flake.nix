@@ -1,5 +1,5 @@
 {
-  description = "The Amethyst programming language";
+  description = "An example package";
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
@@ -9,8 +9,13 @@
         pkgs = (import nixpkgs { inherit system; });
         hpkgs = pkgs.haskellPackages;
 
-        my-drv = {
-          root = ./.;
+        my-drv = { root = ./.; };
+      in
+      {
+        defaultPackage = hpkgs.developPackage my-drv;
+
+        devShell = hpkgs.developPackage (my-drv // {
+          returnShellEnv = true;
           withHoogle = false;
           modifier = drv: pkgs.haskell.lib.addBuildTools drv (
             with pkgs;
@@ -19,14 +24,9 @@
               bashInteractive
               cabal-install
               haskell-language-server
+              hpack
             ]
           );
-        };
-      in
-      {
-        defaultPackage = hpkgs.developPackage my-drv;
-        devShell = hpkgs.developPackage (my-drv // {
-          returnShellEnv = true;
         });
       });
 }

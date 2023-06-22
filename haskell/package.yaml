@@ -1,0 +1,21 @@
+name: example
+version: 0.0.1
+synopsis: An example package
+maintainer: Eleonora <leonsch@protonmail.com>
+github: user/repo
+
+ghc-options: -Wall
+
+dependencies:
+  - name: base
+    mixin:
+      - hiding (Prelude)
+  - name: relude
+    mixin:
+      - (Relude as Prelude)
+      - ''
+  - flow
+
+executable:
+  main: Main.hs
+  source-dirs: app
